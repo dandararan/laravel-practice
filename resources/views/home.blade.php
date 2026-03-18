@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.default')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    @vite(['resources/css/app.css'])
-</head>
 
-<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
+@section('header')
+    <h2>This is the header</h2>
+@endsection
+
+@section('maincontent')
     <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl">
         <h1 class="text-3xl font-semibold text-slate-900 mb-8 text-center tracking-tight">Welcome Back</h1>
 
-        <form action="{{ route("formsubmitted") }}" method="post" class="space-y-6">
+        <form action="{{ route('formsubmitted') }}" method="post" class="space-y-6">
             @csrf
             <div class="space-y-2">
                 <label for="fullname" class="block text-sm font-semibold text-slate-700 px-1">Full Name</label>
@@ -34,6 +31,8 @@
             </button>
         </form>
     </div>
-</body>
+@endsection
 
-</html>
+@section('footer')
+    <h2>This is a footer</h2>
+@endsection

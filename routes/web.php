@@ -7,6 +7,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/contact', function() {
+    return view('contact');
+});
+
 //POST route example
 Route::post("/formsubmitted", function (Request $request) {
 
