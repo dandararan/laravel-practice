@@ -1,37 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-# Route Examples
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Http\Request;
 
 Route::get('/home', function () {
     return view('home');
 });
 
-# Route Parameters
-Route::get('/portfolio/{firstName}/{lastName}', function ($firstName, $lastName) {
-    return $firstName . " " . $lastName;
-});
+//POST route example
+Route::post("/formsubmitted", function (Request $request) {
 
-# Named routes
-Route::get('/test', function () {
-    return "This is a test";
-})->name('test');
+    $request->validate([
+        'fullname' => 'required|min:1|max:30',
+        'email' => 'required|email|min:1|max:30'
+    ]);
 
-#Grouped routes
-Route::get('/portfolio', function () {
-    return view('portfolio');
-});
+    $fullname = $request->input("fullname");
+    $email = $request->input("email");
 
-Route::prefix("portfolio")->group(function () {
-    Route::get('/company', function () {
-        return view('company');
-    });
-
-    Route::get('/organization', function () {
-        return view('organization');
-    });
-});
+    return "Your full name is " . $fullname . " and your email is " . $email;
+})->name("formsubmitted");
