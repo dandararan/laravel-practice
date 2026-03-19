@@ -11,6 +11,7 @@
 
 <body>
     <header>
+        <img src="{{ asset('/images/search.png') }}" alt="">
         @yield('header')
         @include('sidemenu')
     </header>
